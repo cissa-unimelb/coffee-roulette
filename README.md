@@ -10,3 +10,4 @@ Install [Google's client library](https://developers.google.com/gmail/api/quicks
 
 Obtain credentials JSON file from the ```Coffee Roulette``` Google Cloud project, via the service account ```coffee-roulette-email-client```. 
 Simply navigate to **IAM and admin**, **Service accounts**, click on ```coffee-roulette-email-client```, **Keys**, click **Add key** and **Create new key**.
+Modify ```SERVICE_FILE_PATH``` in ```main.py``` with the appropriate credentials file path.
