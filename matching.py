@@ -4,6 +4,7 @@ import json
 import random
 from functools import partial
 from typing import Callable
+import time
 
 CSV_FILE_PATH = "people.csv"
 
@@ -20,7 +21,7 @@ def satisfy_constraint(constraints: dict[str, list[str]], role_map: dict[str, st
     return role_constraint and have_met_constraint
 
 
-def find_pair(name_list: list[str], constraint_func: Callable):
+def find_pair(name_list: list[str], constraint_func: Callable, start_time):
     '''
     Recursively backtracks until a list of pairs that satisfy some constraints is found.
 
@@ -28,8 +29,12 @@ def find_pair(name_list: list[str], constraint_func: Callable):
     :param constraint_func: Function that checks if a potential pairing satisfy some arbitrary constraint(s).
     Function only takes in a tuple of two names representing a potential pair.
     Any additional arguments must be partially applied prior.
+    :param start_time: Time when the function started running.
     :return: List of pairings
     '''
+    # Prevent function from running for more than 60 seconds
+    if time.time() - start_time > 60:
+        return None
 
     random.shuffle(name_list)
     candidate = name_list.pop(0)
@@ -41,7 +46,7 @@ def find_pair(name_list: list[str], constraint_func: Callable):
             if len(new_name_list) == 0:
                 return [potential_pair]
 
-            result: list[tuple[str, str]] = find_pair(new_name_list, constraint_func)
+            result: list[tuple[str, str]] = find_pair(new_name_list, constraint_func, start_time)
             if result is not None:
                 result.insert(0, potential_pair)
                 return result
@@ -50,9 +55,9 @@ def find_pair(name_list: list[str], constraint_func: Callable):
 
 
 def find():
-    csv_data = load_csv(CSV_FILE_PATH)
-    name_list = get_name_list(csv_data)
-    role_map = get_name_role_mapping(csv_data)
+    load_csv()
+    name_list = get_name_list()
+    role_map = get_name_role_mapping()
 
     if not os.path.isfile("constraints.json"):
         with open("constraints.json", "w") as f:
@@ -62,9 +67,10 @@ def find():
         constraints: dict[str, list[str]] = json.load(f)
 
     constraint_func = partial(satisfy_constraint, constraints, role_map)
-    pairings = find_pair(name_list, constraint_func)
+    pairings = find_pair(name_list, constraint_func, time.time())
     if pairings is None:
-        return
+        os.remove("constraints.json")
+        return find()
 
     for pair in pairings:
         constraints[pair[0]].append(pair[1])
