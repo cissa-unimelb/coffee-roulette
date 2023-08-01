@@ -12,4 +12,8 @@ def get_name_list(csv_data):
 
 
 def get_name_email_mapping(csv_data):
+    return {row[0]: row[2] for row in csv_data}
+
+
+def get_name_role_mapping(csv_data):
     return {row[0]: row[1] for row in csv_data}

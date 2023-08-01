@@ -1,4 +1,4 @@
-from csv_processing import load_csv, get_name_list
+from csv_processing import load_csv, get_name_list, get_name_role_mapping
 import os
 import json
 import random
@@ -8,14 +8,16 @@ from typing import Callable
 CSV_FILE_PATH = "people.csv"
 
 
-def satisfy_constraint(constraints: dict[str, list[str]], pair: tuple[str, str]):
+def satisfy_constraint(constraints: dict[str, list[str]], role_map: dict[str, str], pair: tuple[str, str]):
     '''
     Check if a potential pairing satisfy some arbitrary constraint(s).
 
     :param pair: Tuple of two names representing a potential pair.
     :return: True/False. True if the pair satisfy the constraint(s), False otherwise.
     '''
-    return pair[0] not in constraints[pair[1]] and pair[1] not in constraints[pair[0]]
+    role_constraint = role_map[pair[0]] != role_map[pair[1]]
+    have_met_constraint = pair[0] not in constraints[pair[1]] and pair[1] not in constraints[pair[0]]
+    return role_constraint and have_met_constraint
 
 
 def find_pair(name_list: list[str], constraint_func: Callable):
@@ -50,6 +52,7 @@ def find_pair(name_list: list[str], constraint_func: Callable):
 def find():
     csv_data = load_csv(CSV_FILE_PATH)
     name_list = get_name_list(csv_data)
+    role_map = get_name_role_mapping(csv_data)
 
     if not os.path.isfile("constraints.json"):
         with open("constraints.json", "w") as f:
@@ -58,8 +61,11 @@ def find():
     with open("constraints.json", "r") as f:
         constraints: dict[str, list[str]] = json.load(f)
 
-    constraint_func = partial(satisfy_constraint, constraints)
+    constraint_func = partial(satisfy_constraint, constraints, role_map)
     pairings = find_pair(name_list, constraint_func)
+    if pairings is None:
+        return
+
     for pair in pairings:
         constraints[pair[0]].append(pair[1])
         constraints[pair[1]].append(pair[0])
