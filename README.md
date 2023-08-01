@@ -20,9 +20,13 @@ Modify ```CSV_FILE_PATH``` in ```csv_processing.py``` with the appropriate CSV f
 
 Coffee roulette uses Cron to automatically schedule scripts for execution at regular intervals. As such, it is recommended to run coffee roulette in a Linux environment.
 
-First ensure Cron is running properly on the system. Try to schedule a Cron job to run ```cron_test.py``` every minute, it should send an email to some email address every minute.
+First ensure Cron is running properly on the system. Try to schedule a Cron job as **root** to run ```cron_test.py``` every minute, it should send an email to some email address every minute.
+
+Install python's cron module via ```pip install python-crontab```
 
 Ensuring that Cron is running properly, run ```cron_scheduler.py``` and replace ```cron.new(command='/path/to/python /path/to/main.py')``` with the appropriate paths.
+
+By default, coffee roulette is configuered to run on the 1st and 15th of every month at 12am (roughly once every fortnight). This can be adjusted in ```cron_scheduler.py```
 
 ## How does it work
 
