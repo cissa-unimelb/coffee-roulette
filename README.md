@@ -1,6 +1,6 @@
 # coffee-roulette
 
-Automated friend matching. Matches random people together for a quick coffee meet up at regular intervals (e.g every week).
+Automated friend matching. Matches random people together for a quick coffee meet up at regular intervals (e.g every week)
 
 ### Run locally
 
