@@ -5,7 +5,7 @@ James Xu,Executive,secretary@cissa.org.au,TRUE
 Selena Lee,Executive,treasurer@cissa.org.au,TRUE
 Kasie Wang,Education,education@cissa.org.au,TRUE
 Chloe Zhang,Events,events@cissa.org.au,TRUE
-Ivan Zhuang,Publicity,publicity@cissa.org.au,TRUE
+Ivan Zhuang,Publicity,publicity@cissa.org.au,FALSE
 James Dinh,Industry,industry@cissa.org.au,TRUE
 Bowen Feng,IT,webmaster@cissa.org.au,TRUE
 Jennifer Soo,Student Experience,studentexperience@cissa.org.au,TRUE
@@ -13,7 +13,7 @@ Aimee Liang,Diversity,diversity@cissa.org.au,TRUE
 Florence Tang,Product,product@cissa.org.au,TRUE
 Harrison Langdon,Competitions,competitions@cissa.org.au,TRUE
 Amanda Chao,People and Culture,peopleandculture@cissa.org.au,TRUE
-Josh Brown,Education,joshua.brown@cissa.org.au,TRUE
+Josh Brown,Education,joshua.brown@cissa.org.au,FALSE
 Edward Howells,Education,edward.howells@cissa.org.au,TRUE
 Prathyush Prashanth Rao,Education,prathyush.rao@cissa.org.au,TRUE
 Rama Kaorma,Education,rama.kaorma@cissa.org.au,TRUE
@@ -25,7 +25,7 @@ Kevin Wu,Events,kevin.wu@cissa.org.au,TRUE
 Bruce Bian,Events,bruce.bian@cissa.org.au,TRUE
 Cinque Howells,Events,cinque.howells@cissa.org.au,TRUE
 Catie Muir,Publicity,catherine.muir@cissa.org.au,TRUE
-Harry Chen,Publicity,harry.chen@cissa.org.au,TRUE
+Harry Chen,Publicity,harry.chen@cissa.org.au,FALSE
 Aarushi Dua,Publicity,aarushi.dua@cissa.org.au,TRUE
 Alleena Waseem,Publicity,alleena.waseem@cissa.org.au,TRUE
 Rebecca Hwang,Publicity,rebecca.hwang@cissa.org.au,TRUE
@@ -54,6 +54,8 @@ Wei Kai Khoo,Product,sean.khoo@cissa.org.au,TRUE
 Jesslyn Alexis Andriono,Product,jesslyn.andriono@cissa.org.au,TRUE
 Lyn Tran,Product,lyn.tran@cissa.org.au,TRUE
 Ellen Ho,Product,ellen.ho@cissa.org.au,TRUE
-Adam Eldaly,Competitions,adam.eldaly@cissa.org.au,TRUE
+Adam Eldaly,Competitions,adam.eldaly@cissa.org.au,FALSE
 Josh Heng,Competitions,josh.heng@cissa.org.au,TRUE
 Rebecca Le,Competitions,rebecca.le@cissa.org.au,TRUE
+Margaret Xu,Industry,margaret.xu1130@gmail.com,TRUE
+Tyana Tsai,People and Culture,tctsai@student.unimelb.edu.au ,TRUE
